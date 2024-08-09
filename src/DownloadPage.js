@@ -16,8 +16,7 @@ const DownloadPage = () => {
     const handleDownload = async (paper) => {
         try {
             // Construct the download URL based on the paper details
-            const downloadUrl = `http://s3-storage-env.eba-2cqjhzga.eu-north-1.elasticbeanstalk.com/paper/download/${encodeURIComponent(paper.link)}`;
-    
+            const downloadUrl = `http://localhost:8080/paper/download/${encodeURIComponent(paper.link)}`;
             console.log(downloadUrl)
 
             // Use axios to make a GET request to download the paper
