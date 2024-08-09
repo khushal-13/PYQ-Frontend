@@ -10,8 +10,6 @@ const App = () => {
             <Routes>
                 <Route path="/" element={<HomePage />} />
                 <Route path="/download" element={<DownloadPage />} /> 
-                {/* <Route path='/CourseDataFetcher' element={<CourseDataFetcher/>}/> */} 
-                {/* <Route path="/results" element={<ResultsPage />} /> */}
             </Routes>
         </Router>
     );

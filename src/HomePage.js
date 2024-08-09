@@ -82,11 +82,12 @@ const HomePage = () => {
                         <select value={subject} onChange={(e) => setSubject(e.target.value)}>
                             <option value="">Select a subject</option>
                             <option value="Computer Network"> Computer Network</option>
+                            <option value="Engineering Mathematics"> Engineering Mathematics </option>
                             <option value="Software Engineering">Software Engineering</option>
                             <option value=" Green IT">Green IT</option>
                             <option value="Operating System"> Operating System</option>
                             <option value="Data Structures"> Data Structures</option>
-                            <option value="Engineering Mathematics"> Engineering Mathematics </option>
+                            
                         </select> 
                     </label>
                 </>
