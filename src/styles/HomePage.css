@@ -16,7 +16,7 @@ code {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px;
+  padding: 10px;
   font-family: Arial, sans-serif;
   background-color: #f9f9f9;
   border-radius: 10px;
@@ -27,7 +27,7 @@ code {
 
 h1 {
   font-size: 2.5rem;
-  margin-bottom: 20px;
+  /* margin-bottom: 10px; */
   color: #333;
 }
 
@@ -36,6 +36,7 @@ form {
   flex-direction: column;
   align-items: center;
   width: 100%;
+  padding: 30px;
   max-width: 600px;
 }
 

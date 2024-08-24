@@ -1,3 +1,4 @@
+/* src/PapersPage.css */
 .download-page {
     display: flex;
     flex-direction: column;
@@ -9,6 +10,7 @@
 h1 {
     font-size: 2.5rem;
     margin-bottom: 20px;
+    padding: 80px;
 }
 
 h2 {

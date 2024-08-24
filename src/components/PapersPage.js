@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react';
+// src/components/PapersPage
+import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import './DownloadPage.css';
 import axios from 'axios';
+import '../styles/PapersPage.css';
 
 const DownloadPage = () => {
     const location = useLocation();
@@ -16,7 +17,7 @@ const DownloadPage = () => {
     const handleDownload = async (paper) => {
         try {
             // Construct the download URL based on the paper details
-            const downloadUrl = `http://localhost:8080/paper/download/${encodeURIComponent(paper.link)}`;
+            const downloadUrl = `https://khushal.online/paper/download/${encodeURIComponent(paper.link)}`;
             console.log(downloadUrl)
 
             // Use axios to make a GET request to download the paper

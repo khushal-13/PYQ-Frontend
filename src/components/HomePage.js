@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './HomePage.css';
-import './DownloadPage.js'
+import '../styles/HomePage.css';
 
 const HomePage = () => {
     const [selectedOption, setSelectedOption] = useState('');
@@ -23,17 +22,35 @@ const HomePage = () => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        if (selectedOption && subject && branch && semester) {
+        if (selectedOption && branch && semester) {
+            let endpoint = '';
+    
+            // Determine the API endpoint based on the selected option
+            if (selectedOption === 'download-question-paper') {
+                endpoint = `https://khushal.online/paper/getPaper?branch=${branch}&semester=${semester}&subject=${subject}`;
+            } else if (selectedOption === 'download-reference-books') {
+                endpoint = `https://khushal.online/book/getBook?branch=${branch}&semester=${semester}&subject=${subject}`;
+            }
+    
             try {
-                console.log(branch, " ", semester, " ", subject)
-                const response = await fetch(`http://localhost:8080/paper/getPaper?branch=${branch}&semester=${semester}&subject=${subject}`);
-                if (!response.ok) {  
+                console.log('Endpoint: ', endpoint);
+    
+                const response = await fetch(endpoint);
+    
+                if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }
-
+    
                 const data = await response.json();
-                console.log(data)
-                navigate('/download', { state: { papers: data } });
+                console.log('Fetched data:', data);
+    
+                if (selectedOption === 'download-question-paper') {
+                    navigate('/download', { state: { papers: data } });
+                } else if (selectedOption === 'download-reference-books') {
+                    navigate('/books', { state: { books: data } });
+                }
+
+                
             } catch (error) {
                 console.error('Error fetching data:', error);
                 alert('Error fetching data');
@@ -55,14 +72,13 @@ const HomePage = () => {
                         <option value="download-reference-books">Download Reference Books</option>
                     </select>
                 </label>
-
                 <>
                     <label>
                         Select Branch:
                         <select value={branch} onChange={(e) => setBranch(e.target.value)}>
                             <option value="">Select a branch</option>
-                            <option value="IT">IT</option>
                             <option value="CS">CS</option>
+                            <option value="IT">IT</option>
                             <option value="EXTC">EXTC</option>
                             <option value="CSE">CSE</option>
                         </select>
@@ -75,9 +91,8 @@ const HomePage = () => {
                                 <option key={num + 1} value={num + 1}>{num + 1}</option>
                             ))}
                         </select>
-                        </label>
-
-                        <label>
+                    </label>
+                    <label>
                         Select Subject:
                         <select value={subject} onChange={(e) => setSubject(e.target.value)}>
                             <option value="">Select a subject</option>
@@ -87,7 +102,6 @@ const HomePage = () => {
                             <option value=" Green IT">Green IT</option>
                             <option value="Operating System"> Operating System</option>
                             <option value="Data Structures"> Data Structures</option>
-                            
                         </select> 
                     </label>
                 </>
